@@ -1,8 +1,9 @@
 version: "2"
+
 run:
-  # CI currently provides golangci-lint binaries built with Go 1.24.
-  # Keep this at 1.24 until golangci-lint ships with a newer toolchain.
-  go: "1.24"
+  go: "1.26"
+  timeout: 5m
+
 linters:
   enable:
     - godot
@@ -10,19 +11,15 @@ linters:
     - unconvert
   exclusions:
     generated: lax
-    presets:
-      - comments
-      - common-false-positives
-      - legacy
-      - std-error-handling
     rules:
-      - linters:
+      - path: _test\.go
+        linters:
           - errcheck
-        path: _test\.go
     paths:
       - third_party$
       - builtin$
       - examples$
+
 formatters:
   enable:
     - gofmt
