@@ -6,6 +6,10 @@ A terminal DOOM fire animation and ASCII art CLI written in Go, built with Charm
 
 ![Flame Demo](demo.gif)
 
+## Note on GPU-Accelerated Terminals
+
+For the best animation experience, use a GPU-accelerated terminal emulator such as [Alacritty](https://github.com/alacritty/alacritty), [Kitty](https://github.com/kovidgoyal/kitty), or similar. While not required, these terminals can provide smoother and more vibrant visuals for the flame animation.
+
 ## Table of Contents
 
 - [Requirements](#requirements)
