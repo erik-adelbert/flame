@@ -25,7 +25,7 @@ const (
 	// MinHeat and MaxHeat define the bounds for the heat value that is assigned
 	// to new ignited cells at the bottom of the grid.
 	MinHeat = 30
-	MaxHeat = 120
+	MaxHeat = 200
 
 	// TimeStep is thåe duration between each update of the fire simulation, controlling
 	// the speed of the animation.
