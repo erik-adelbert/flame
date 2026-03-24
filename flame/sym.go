@@ -2,6 +2,7 @@ package flame
 
 import (
 	"image/color"
+	"sync"
 
 	"charm.land/lipgloss/v2"
 )
@@ -20,12 +21,30 @@ type Symbol struct {
 	Color
 }
 
+var stylePool = sync.Pool{
+	New: func() any {
+		return new(lipgloss.NewStyle())
+	},
+}
+
+func getStyle() *lipgloss.Style {
+	style := stylePool.Get().(*lipgloss.Style)
+	return style
+}
+
+func putStyle(s *lipgloss.Style) {
+	stylePool.Put(s)
+}
+
 // String returns the formatted string representation of the Symbol.
 func (s Symbol) String() string {
 	str, ok := stringCache[s]
+
 	if !ok {
-		style := lipgloss.NewStyle().Foreground(s.RGBA())
-		str = style.Render(string(s.byte))
+		style := getStyle()
+		str = style.Foreground(s.RGBA()).Render(string(s.byte))
+		putStyle(style)
+
 		stringCache[s] = str
 	}
 
