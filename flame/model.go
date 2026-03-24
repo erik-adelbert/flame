@@ -76,8 +76,8 @@ func (m *Model) ignite() {
 
 	hmax := min(40, m.h)
 
-	ω0 := (hmax - 1) * m.w    // index of the first cell in the bottom row
-	ω := m.heats[ω0 : ω0+m.w] // bottom row
+	lo, hi := (hmax-1)*m.w, hmax*m.w // index of the first and last cell in the bottom row
+	ω := m.heats[lo:hi:hi]           // bottom row
 
 	clear(ω) // clear the bottom row before igniting new cells
 
