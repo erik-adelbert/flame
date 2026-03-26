@@ -70,14 +70,14 @@ make bench
 ### Run without Makefile
 
 ```sh
-go run ./cmd/flame
+go run ./cmd/flame/main.go
 ```
 
 Build a binary:
 
 ```sh
 mkdir -p bin
-go build -o bin/flame ./cmd/flame
+go build -o bin/flame ./cmd/flame/main.go
 ./bin/flame
 ```
 
